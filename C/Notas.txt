@@ -1,0 +1,103 @@
+###############################################################################
+#                                                                             #
+#                               NOTAS SOBRE C                                 #                                                                             #
+#                                                                             #
+###############################################################################
+
+-----------------------------------+
+# Compilação pelo GCC:             |
+ 1 - gcc -c arquivo.c -o arquivo.o |
+ 2 - gcc arquivo.o -o arquivo      |
+-----------------------------------+
+
+ - Há cinco tipos básicos de dados em C: caractere, inteiro, ponto flutuante,
+ ponto flutuante de precisão dupla e sem valor (char, int, float, double e void);
+
+ - Uma variável é uma posição nomeada de memória, que é usada para guardar um valor
+ que pode ser modificado pelo programa; Podem ser declaradas em 3 lugares: dentro
+ das funções (locais), na definição dos parâmetros das funções e fora de todas as
+ funções (globais)
+
+ - Há quatro especificadores de classe de armazenamento suportados por C: extern,
+ static, register e auto;
+
+ *extern permite que módulos de um programa grande sejam compliados separadamente
+ sem duplicar variaéis (ex: um arquivo com variaveis globais sendo utilziadas em
+ outro arquivo sem necessitar iniciaPilhar novas variaveis) ->
+
+ Arq 1            Arq2
+ int x,y        extern int x,y;
+ char ch;       extern char ch;
+ main(void){   func22(void){
+  .             x = y/10;
+  .       }     }
+
+ *static permite o armazenamento permanente de uma variável local (dentro de um
+ bloco de funções).
+
+ *register tenta otimizar o processamento de uma variável, utilizando os
+ registradores da CPU. Nem todo tipo de dado pode ser otimizado, porém recebe "
+ tratamento especial". Indicado em laços de variáveis recorrentes. Funciona
+ efetivamente nos tipos "int" e "char".
+
+ - O perador ternário (?) é utilizado para substituir o conjunto if-else. Seu
+ funcionamento é: exp1 ? exp2 : exp3;
+
+ x = 10;
+ y = x > 9 ? 100:200;
+
+ Se x for maior que 9, y recebe 100. Caso contrário, recebe 200.
+
+ - Operador * (conteudo de) e & (endereço de);
+ - Operador em tempo de compilação sizeof() retorna o tamanho, em bytes,
+ da variável ou especificador;
+ - Operador . e -> referenciam elementos individuais de estruturas e uniões.
+
+ - Matrizes unidimensionais são, essencialmente, listas de informações do mesmo
+ tipo, que são armazenadas em posições contíguas da memória em uma ordem de índice;
+
+ - Funções recebem apenas ponteiros para matrizes, especificando-as sem um índice;
+ Ex: int i[10] -> func1(i);
+ Desse modo, uma função pode receber uma matriz de três formas: como um ponteiro
+ (func1(int *x)), como uma matriz dimensionada (func1(int x[10])) ou como uma
+ matriz não dimensionada (func1(int x[]));
+
+ - Em C não existe o "tipo" string, mas sim uma matriz de caracteres; Existem
+ funções auxiliares na biblioteca String.h:
+ strcpy(s1,s2) - copia s2 em s1
+ strcat(s1,s2) - concatena s2 ao final de s1
+ strlen(s1) - retorna o tamanho de s1
+ strcmp(s1,s2) - Retorna 0 se s1 e s2 são iguais, <0 se s1<s2 e >0 se s1>s2
+
+ - Quando uma matriz bidimensional é usada como argumento para função, deve-se
+ passar a matriz no seguinte modelo: x[][tamanho]. Isso ocorre por que o compilador
+ precisa saber o tamanho de cada linha para indexar a matriz corretamente. Em outras
+ palavras, deve-se passar o tamanho da segunda dimensão, apenas.
+
+- Um ponteiro é uma variável que contém um endereço de memória.
+- &  = "endereço de"; * = "conteudo de"
+
+Capítulo 6 - funções
+
+- Chamada por Valor copia o valor de um argumento no escopo da função. Desse modo,
+alterações na variável da rotina não tem efeito nas variáveis usadas para chamá-la;
+
+- Chamada por referência é a passagem do endereço de memória da variável, o que,
+diferentemente da chamada por valor, altera o valor da variável original.
+
+- Quando uma matriz é usada como um argumento para uma função, apenas o endereço
+da matriz é passado, não uma cópia da matriz inteira.
+
+- argc e argv são argumentos especiais de passagem do sistema para programas em
+C; argc é o número de argumentos da linha de comando (é sempre um inteiro); argv
+é um ponteiro para uma matriz de ponteiros para caractere; Em suma, o primeiro
+serve apenas para indicar o número de parâmetros e o segundo sempre será string.
+argv[0] sempre será o nome do programa em execução;
+argv[1] o proximo parametro, e etc;
+Obs: para usar argc e argv basta compilar o programa e, após ./programa, digitar
+o argumento.
+Obs²: argv SEMPRE SERÁ DO TIPO char, portanto, pode ser necessário realizar casting
+Obs³: argv, teoricamente, pode ter 32767 argumentos (tamanho de um int);
+
+
+# Lendo e Escrevendo Strings

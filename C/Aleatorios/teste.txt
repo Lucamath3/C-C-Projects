@@ -1,0 +1,4 @@
+Testando o programa para digitar informações e salvar automaticamente no computador.
+Até agora tudo ok; É possível apertar enter e digitar uma quantidade grande de caracteres no buffer.
+Saindo.
+$

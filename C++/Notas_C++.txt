@@ -1,0 +1,38 @@
+###############################################################################
+#                                                                             #
+#                               NOTAS SOBRE C++                               #                                                                             #
+#                                                                             #
+###############################################################################
+
+ - O Fluxo de dados é realizado por iostream.h, que dispõe de três fluxos pre
+ definidos pelo sistema: cin (entrada padrão), cout(saída parão), e cerr (saída
+ de erros padrão);
+
+ - O operador que permite inserir valores em um fluxo é:
+    '<<' para saída (Apontando pra mão esquerda é saída)
+    '>>' para entrada (Apontando pra mão direita é entrada)
+ Obs: Pode ser utilizados de forma encadeada para indicar diversos fluxos de i/o
+ Obs²: Substituem o operador & da função scanf();
+
+ - Uma variável pode ser declarada em qualquer parte do código, sendo que seu
+ escopo vai até o final do seu bloco;
+
+ - IMPORTANTE! "::" é denominado "operador de resolução de escopo" e permite
+ acessar uma variável global mesmo que existe uma local com mesmo nome;
+
+ - Uma constante em C++ é definida pela palavra reservada const;
+
+ - Structs são como em C, porém não existe mais "typedef"
+
+ - O operador "new" é o novo "malloc" e "delete" é o novo "free";
+ Obs: para liberar um vetor, utiliza-se delete[]; Caso contrário, apenas um
+ espaço é liberado.
+
+ - Funções do tipo "inline" são uteis para melhorar a velociade do programa,
+ entretanto, devem ser usadas apenas se forem funções curtas, uma vez que são
+ copiadas inteiramente para a memória; Substituem a diretiva #define
+
+ - C++ traz a possibilidade de sobrecarga de funções. Para isso, duas ou mais
+ funções podem possuir o mesmo nome, mas listas de parâmetros diferentes.
+
+ ---- 16/66
